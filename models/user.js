@@ -10,13 +10,30 @@ Complete your other field here
 5. Also Enable timestamps which will store the date of document created and updated.
 */
 
-var userSchema = mongoose.Schema({
-  //Write your code here.
-},
-
-{ /* ... */ }
-
+const userSchema = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
+    email: {
+      type: String,
+      required: true,
+    }, 
+  },
+  { timestamps: true }
 );
 
+
+ 
 module.exports = mongoose.model("User", userSchema);
 
